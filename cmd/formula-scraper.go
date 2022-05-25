@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"time"
 
 	rodhandlers "github.com/stoic-llama/formula-scraper/pkg/rodHandlers"
 )
@@ -43,13 +43,20 @@ func main() {
 
 	// log.Println(resp)
 
-	for i := 0; i <= 100; i++ {
-		go doSomething(i)
-	}
-	rodhandlers.PageLoader()
+	// for i := 0; i <= 100; i++ {
+	// 	go doSomething(i)
+	// }
+	// rodhandlers.PageLoader()
 
+	browser := rodhandlers.BaseSetUp()
+
+	// rodhandlers.SetLocation("10029", browser)
+
+	rodhandlers.GetFullProductListing(browser)
+
+	time.Sleep(time.Hour)
 }
 
-func doSomething(x int) {
-	fmt.Printf("Hi %v", x)
-}
+// func doSomething(x int) {
+// 	fmt.Printf("Hi %v", x)
+// }

@@ -18,7 +18,7 @@ func DoGet() string {
 	// 	os.Exit(1)
 	// }
 	resp, err := http.Get("https://www.target.com/s?searchTerm=enfamil+baby+formula")
-	
+
 	errHandler.FatalError("Reading response body failed", err)
 	body, _ := ioutil.ReadAll(resp.Body)
 	doc := soup.HTMLParse(string(body))
