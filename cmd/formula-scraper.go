@@ -7,56 +7,34 @@ import (
 )
 
 func main() {
-	/* 	1) user visits custom search page
-	   	2) user types in zip code, baby formula name into custom search field
-	   	3) program gets https://www.target.com/s?searchTerm= the baby formula name query from Step 2
-	   	4) program stores search results (product listings) in a list of key-value pairs (maps)
-		   Note: This will later go to database and in cache.
+	// browser := rodhandlers.BrowserSetUp()
+	// page := rodhandlers.PageSetUp(browser, "https://www.target.com")
 
-			item data structure
-			- company name (target)
-				- product (Enfamil)
-					- product item (A.R. Powder Formula)
-						- price
-						- count
-						- URL
-						- store location (newington)
+	// rodhandlers.SetLocation(page, "10029")
 
+	// // Get 5 nearest stores to location that was set earlier
+	// stores := rodhandlers.GetNearestStores(browser, "https://www.target.com")
 
-	   	5) for each product item in the list, program starts a thread to flag item as out-of-stock or in-stock
-	   		a) if product item is out-of-stock (count = 0), skip
-			b) if product item is in-stock (count > 0), find all the stores that are closest zip code
+	// // Get all the infant formula product inventory near the selected zip code
+	// listing := rodhandlers.GetFullProductListing(browser, "https://www.target.com/c/formula-nursing-feeding-baby/-/N-5xtkh")
 
-		6) program consolidates results for list of product items
-			a) fill in information for price, count, URL, store location
-
-	*/
-
-	// x := interfaces.DefaultCompany{
-	// 	Name:    "Target",
-	// 	BaseURL: "https://www.target.com/",
+	// var productItems []rodhandlers.ProductItem
+	// for _, store := range stores {
+	// 	for i := 0; i < len(listing); i++ {
+	// 		productItems = append(productItems, rodhandlers.GetProductItemDetails(browser, stores[i], listing)...)
+	// 		rodhandlers.SetLocationByStore(page, store)
+	// 	}
 	// }
-	// log.Println(x)
 
-	// resp := internal.DoGet()
-	// // strings.Split(resp, "styles__StyledCol-sc-ct8kx6-0")
+	// log.Printf("Product Items from %v: %v", "10029", productItems)
 
-	// log.Println(resp)
+	// rodhandlers.GetTargetProducts()
 
-	// for i := 0; i <= 100; i++ {
-	// 	go doSomething(i)
-	// }
-	// rodhandlers.PageLoader()
+	// rodhandlers.GetDateToday()
 
-	browser := rodhandlers.BaseSetUp()
+	// rodhandlers.GetDateTomorrow()
 
-	// rodhandlers.SetLocation("10029", browser)
-
-	rodhandlers.GetFullProductListing(browser)
+	rodhandlers.TargetScrape("10029")
 
 	time.Sleep(time.Hour)
 }
-
-// func doSomething(x int) {
-// 	fmt.Printf("Hi %v", x)
-// }
